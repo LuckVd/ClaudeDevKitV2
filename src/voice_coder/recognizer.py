@@ -124,3 +124,29 @@ class Recognizer:
         if self._recognizer:
             # 清空缓冲区，开始新的识别
             pass  # Vosk 会自动处理
+
+    def update_hotwords(self, hotwords: dict[str, float]) -> None:
+        """
+        运行时更新热词
+
+        Args:
+            hotwords: 新的热词字典
+        """
+        if not self._recognizer:
+            return
+
+        # 合并配置中的静态热词
+        all_hotwords = dict(self.config.hotwords)
+        all_hotwords.update(hotwords)
+
+        if not all_hotwords:
+            return
+
+        # 重新配置热词
+        phrases = list(all_hotwords.keys())
+        if phrases:
+            grammar = ["[unk]"] + phrases
+            try:
+                self._recognizer.SetGrammar(json.dumps(grammar))
+            except Exception:
+                pass

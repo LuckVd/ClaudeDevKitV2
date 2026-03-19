@@ -13,7 +13,7 @@
 
 - 项目名称：VoiceCoder
 - 技术目标：项目感知型语音输入工具，能够识别项目专属术语并自动学习新词
-- 当前阶段：v0.2 项目术语提取完成，进入 v0.3 规划
+- 当前阶段：v0.3 动态更新完成，进入 v0.4 规划
 - 主文档说明：本文件负责记录总体设计、阶段目标和实现进度。
 
 ## 2. 总体技术架构
@@ -28,6 +28,7 @@
 | M04 | emitter | 键盘输出 | `KeyboardEmitter.type_text(str)` | ydotool 封装 |
 | M05 | cli | 命令行接口 | `voice-coder start/stop/scan` | click 框架 |
 | M06 | extractor | 术语提取 | `TermExtractor.scan() -> ExtractionResult` | 正则匹配 + 权重计算 |
+| M07 | watcher | 文件监控 | `FileWatcher.start() -> dict` | watchdog + 防抖 |
 
 ### 2.2 关键集成关系
 
@@ -85,8 +86,9 @@
 | G02 | G02-S01 | 核心识别模块 | config/audio/recognizer/emitter/cli | done | G01 |  | accepted | passed | 2026-03-19 |  | 所有步骤完成 |
 | G03 |  | v0.2 项目术语提取 | 语料库扫描 + 热词生成 | done | G02 |  | accepted | passed | 2026-03-19 |  | 17 tests passed |
 | G03 | G03-S01 | 术语提取器 | extractor/cli scan/热词文件加载 | done | G02 |  | accepted | passed | 2026-03-19 |  | 9 tests passed |
-| G04 |  | v0.3 动态更新 | 文件监控 + 热词热更新 | planned | G03 |  | pending | not_started |  |  | 下一个目标 |
-| G05 |  | v0.4 生产可用 | CLI 完善 + 错误处理 + 文档 | planned | G04 |  | pending | not_started |  |  | 待规划 |
+| G04 |  | v0.3 动态更新 | 文件监控 + 热词热更新 | done | G03 |  | accepted | passed | 2026-03-20 |  | 24 tests passed |
+| G04 | G04-S01 | 文件监控器 | watcher/增量更新/--watch选项 | done | G03 |  | accepted | passed | 2026-03-20 |  | 7 tests passed |
+| G05 |  | v0.4 生产可用 | CLI 完善 + 错误处理 + 文档 | planned | G04 |  | pending | not_started |  |  | 下一个目标 |
 
 ## 6. 开放风险与阻塞
 

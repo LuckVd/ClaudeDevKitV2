@@ -12,16 +12,20 @@ from voice_coder.config import CorpusConfig, get_default_config_path, load_confi
 from voice_coder.emitter import KeyboardEmitter
 from voice_coder.extractor import extract_hotwords, save_hotwords
 from voice_coder.recognizer import Recognizer
+from voice_coder.watcher import FileWatcher
 
 
 # 全局状态，用于信号处理
 _running = False
+_watcher: FileWatcher | None = None
 
 
 def signal_handler(signum, frame):
     """处理终止信号"""
-    global _running
+    global _running, _watcher
     _running = False
+    if _watcher is not None:
+        _watcher.stop()
     click.echo("\n正在停止...")
 
 
@@ -47,14 +51,29 @@ def main():
     is_flag=True,
     help="显示详细输出",
 )
-def start(config_path: str | None, verbose: bool):
+@click.option(
+    "--watch",
+    is_flag=True,
+    help="启用文件监控，自动更新热词",
+)
+@click.option(
+    "--watch-path",
+    "watch_paths",
+    multiple=True,
+    type=click.Path(exists=True),
+    default=None,
+    help="监控的语料库路径（可多次指定，默认使用配置中的路径）",
+)
+def start(config_path: str | None, verbose: bool, watch: bool, watch_paths: tuple[str, ...]):
     """
     启动语音识别
 
     从麦克风采集音频，识别后自动输入到当前焦点窗口。
     按 Ctrl+C 停止。
+
+    使用 --watch 启用文件监控，语料库变化时自动更新热词。
     """
-    global _running
+    global _running, _watcher
 
     # 确定配置文件路径
     if config_path:
@@ -77,6 +96,8 @@ def start(config_path: str | None, verbose: bool):
         click.echo(f"模型路径: {config.model_path}")
         click.echo(f"热词数量: {len(config.hotwords)}")
         click.echo(f"采样率: {config.audio.sample_rate}")
+        if watch:
+            click.echo(f"文件监控: 已启用")
 
     # 初始化识别器
     try:
@@ -89,6 +110,40 @@ def start(config_path: str | None, verbose: bool):
 
     # 初始化键盘输出器
     emitter = KeyboardEmitter()
+
+    # 启动文件监控
+    if watch:
+        # 确定监控路径
+        if watch_paths:
+            corpus_paths = [Path(p).resolve() for p in watch_paths]
+        elif config.corpus.paths:
+            corpus_paths = config.corpus.paths
+        else:
+            click.echo("警告: 未配置监控路径，文件监控已禁用", err=True)
+            watch = False
+
+        if watch:
+            corpus_config = CorpusConfig(
+                paths=corpus_paths,
+                extensions=config.corpus.extensions,
+                exclude=config.corpus.exclude,
+            )
+
+            def on_hotwords_update(hotwords: dict[str, float]):
+                """热词更新回调"""
+                recognizer.update_hotwords(hotwords)
+                if verbose:
+                    click.echo(f"热词已更新: {len(hotwords)} 个")
+
+            _watcher = FileWatcher(
+                config=corpus_config,
+                on_update=on_hotwords_update,
+                debounce_delay=10.0,
+            )
+
+            initial_hotwords = _watcher.start()
+            recognizer.update_hotwords(initial_hotwords)
+            click.echo(f"初始热词: {len(initial_hotwords)} 个")
 
     # 注册信号处理
     signal.signal(signal.SIGINT, signal_handler)
@@ -118,6 +173,10 @@ def start(config_path: str | None, verbose: bool):
     except Exception as e:
         click.echo(f"错误: {e}", err=True)
         sys.exit(1)
+    finally:
+        # 确保停止文件监控
+        if _watcher is not None:
+            _watcher.stop()
 
     click.echo("语音识别已停止。")
 
