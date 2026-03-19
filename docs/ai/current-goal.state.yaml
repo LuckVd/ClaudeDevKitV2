@@ -1,0 +1,19 @@
+goal_id: null
+title: null
+stage: empty
+status: idle
+selected_option: null
+design_confirmed: false
+blocked_by: []
+open_questions:
+  - What should the first goal be?
+implementation_steps: []
+test_scope: []
+security_blockers: []
+dead_code_actions: []
+goal_candidates: []
+sync_status: not_started
+last_check_at: null
+last_security_scan_at: null
+last_deadcode_scan_at: null
+last_synced_at: null
