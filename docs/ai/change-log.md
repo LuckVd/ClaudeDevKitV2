@@ -1,5 +1,15 @@
 # Change Log
 
+## 2026-03-19 - G03 VoiceCoder v0.2 项目术语提取
+
+- Goal ID: G03-S01
+- Summary: 实现术语提取功能，包括语料库扫描、正则匹配标识符、混合权重计算、scan 命令
+- Impact: `src/voice_coder/extractor.py`, `tests/test_extractor.py`, 更新 `config.py`、`cli.py`、`recognizer.py`
+- Tests: 17/17 passed (config 8 + extractor 9)
+- Dead Code: 无
+- Security: 无敏感信息泄露
+- Commit Status: 待提交
+
 ## 2026-03-19 - G02 VoiceCoder v0.1 MVP
 
 - Goal ID: G02-S01

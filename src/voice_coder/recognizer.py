@@ -6,6 +6,7 @@ from pathlib import Path
 from vosk import KaldiRecognizer, Model, SetLogLevel
 
 from voice_coder.config import Config
+from voice_coder.extractor import load_hotwords
 
 
 class Recognizer:
@@ -53,14 +54,29 @@ class Recognizer:
 
     def _configure_hotwords(self) -> None:
         """配置热词"""
-        if not self.config.hotwords:
+        # 合并配置文件中的热词和热词文件中的热词
+        hotwords = dict(self.config.hotwords)
+
+        # 从热词文件加载
+        if self.config.hotwords_file and self.config.hotwords_file.exists():
+            file_hotwords = load_hotwords(self.config.hotwords_file)
+            # 文件中的热词覆盖配置中的（优先级更高）
+            hotwords.update(file_hotwords)
+
+        # 同时检查默认热词文件
+        default_hotwords_path = Path.home() / ".config" / "voice-coder" / "hotwords.yaml"
+        if default_hotwords_path.exists():
+            file_hotwords = load_hotwords(default_hotwords_path)
+            hotwords.update(file_hotwords)
+
+        if not hotwords:
             return
 
         # Vosk 支持通过 JSON 配置热词
         # 格式: {"phrase_list": [...], "boost": [...]}
         # 注意：需要在创建识别器时或通过 SetGrammar 配置
         # 这里我们使用 SetGrammar 方式配置短语列表
-        phrases = list(self.config.hotwords.keys())
+        phrases = list(hotwords.keys())
         if phrases:
             # 构建简单语法：允许任意短语或自由文本
             grammar = ["[unk]"] + phrases

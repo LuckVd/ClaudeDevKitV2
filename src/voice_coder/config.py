@@ -16,11 +16,21 @@ class AudioConfig:
 
 
 @dataclass
+class CorpusConfig:
+    """语料库配置"""
+    paths: list[Path] = field(default_factory=list)
+    extensions: list[str] = field(default_factory=lambda: [".py", ".js", ".ts", ".md"])
+    exclude: list[str] = field(default_factory=lambda: ["node_modules", ".git", "__pycache__", "venv", ".venv"])
+
+
+@dataclass
 class Config:
     """主配置"""
     model_path: Path
     hotwords: dict[str, float] = field(default_factory=dict)
     audio: AudioConfig = field(default_factory=AudioConfig)
+    corpus: CorpusConfig = field(default_factory=CorpusConfig)
+    hotwords_file: Path | None = None
 
 
 def expand_path(path: str | Path) -> Path:
@@ -70,10 +80,26 @@ def load_config(config_path: str | Path) -> Config:
         frames_per_buffer=audio_data.get("frames_per_buffer", 4096),
     )
 
+    # 解析语料库配置
+    corpus_data = data.get("corpus", {})
+    corpus_paths = [expand_path(p) for p in corpus_data.get("paths", [])]
+    corpus = CorpusConfig(
+        paths=corpus_paths,
+        extensions=corpus_data.get("extensions", [".py", ".js", ".ts", ".md"]),
+        exclude=corpus_data.get("exclude", ["node_modules", ".git", "__pycache__", "venv", ".venv"]),
+    )
+
+    # 解析热词文件路径
+    hotwords_file = None
+    if "hotwords_file" in data:
+        hotwords_file = expand_path(data["hotwords_file"])
+
     return Config(
         model_path=model_path,
         hotwords=hotwords,
         audio=audio,
+        corpus=corpus,
+        hotwords_file=hotwords_file,
     )
 
 
