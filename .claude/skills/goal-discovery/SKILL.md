@@ -2,6 +2,8 @@
 
 Use this skill when `/ai-goal` needs to inspect the current workspace before proposing options.
 
+Use Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Workflow:
 
 1. Read the default files in `docs/ai/`.

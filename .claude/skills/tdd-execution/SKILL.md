@@ -2,6 +2,8 @@
 
 Use this skill when the current goal enters implementation.
 
+Use Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Rules:
 
 - Start from a failing or missing test case whenever feasible.

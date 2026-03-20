@@ -1,7 +1,10 @@
 Answer repository or workflow questions in strict read-only mode.
 
+Respond in Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Use these skills when needed:
 
+- `constraints-loader`
 - `read-only-qa`
 
 Rules:
@@ -17,3 +20,4 @@ Guardrails:
 
 - Treat this command as a read-only inspection surface.
 - Prefer concrete answers over process explanations.
+- Honor any loaded human-editable constraints when producing the response.

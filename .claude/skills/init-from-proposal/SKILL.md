@@ -2,6 +2,8 @@
 
 Use this skill when `/ai-init` receives a long technical roadmap / blueprint document or a repository-local roadmap path.
 
+Use Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Goals:
 
 - bootstrap a blank or near-blank repository from a technical roadmap blueprint

@@ -2,6 +2,8 @@
 
 Use this skill after the user has selected a direction for the current goal.
 
+Use Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Requirements:
 
 - Fill in scope, out-of-scope, acceptance criteria, test plan, and implementation steps.

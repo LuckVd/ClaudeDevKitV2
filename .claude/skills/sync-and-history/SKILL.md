@@ -2,6 +2,8 @@
 
 Use this skill during `/ai-sync`.
 
+Use Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Responsibilities:
 
 - update the roadmap table row for the finished goal or subgoal

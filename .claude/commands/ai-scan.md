@@ -1,5 +1,7 @@
 Refresh the repository summary for Claude and the user.
 
+Respond in Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Use these skills when needed:
 
 - `constraints-loader`

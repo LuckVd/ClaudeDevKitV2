@@ -1,5 +1,7 @@
 Drive the full current-goal workflow from discovery through plan confirmation.
 
+Respond in Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Use these skills when needed:
 
 - `goal-discovery`

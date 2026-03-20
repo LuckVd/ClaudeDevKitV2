@@ -2,6 +2,8 @@
 
 Use this skill to prevent isolated implementations that do not integrate with the real project.
 
+Use Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Check for:
 
 - duplicate abstractions

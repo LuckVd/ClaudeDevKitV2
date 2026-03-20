@@ -2,12 +2,15 @@
 
 Use this skill for `/ai-help`.
 
+Use Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Responsibilities:
 
 - read workflow state from `docs/ai/`
 - build a compact markdown table of commands
 - explain the current state in plain language
 - recommend the most useful next command
+- honor any loaded project constraints that affect response language or format
 
 Recommendation logic:
 

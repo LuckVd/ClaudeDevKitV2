@@ -2,6 +2,8 @@
 
 Use this skill for `/ai-ask`.
 
+Use Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Read-only contract:
 
 - may read source files, configs, docs, and workflow files

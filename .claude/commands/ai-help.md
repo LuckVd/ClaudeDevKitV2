@@ -1,7 +1,10 @@
 Explain the workflow in a concise, actionable format.
 
+Respond in Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Use these skills when needed:
 
+- `constraints-loader`
 - `help-router`
 
 Output requirements:
@@ -33,3 +36,4 @@ Guardrails:
 
 - Prefer the current workflow state over generic advice.
 - If no goal is active, explain that clearly.
+- Honor any loaded human-editable constraints when producing the response.

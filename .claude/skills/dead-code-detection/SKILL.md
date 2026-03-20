@@ -2,6 +2,8 @@
 
 Use this skill for `/ai-deadcode` or before `/ai-sync` when dead code may affect the result.
 
+Use Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Detection policy:
 
 - default to high-confidence findings only

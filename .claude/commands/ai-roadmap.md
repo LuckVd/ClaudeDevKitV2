@@ -1,5 +1,11 @@
 Manage the long-term roadmap in `docs/ai/roadmap.md`.
 
+Respond in Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
+Use these skills when needed:
+
+- `constraints-loader`
+
 Steps:
 
 1. Read `roadmap.md`, `current-goal.md`, and `current-goal.state.yaml`.
@@ -12,3 +18,4 @@ Guardrails:
 
 - Ask before making material roadmap changes that were not requested.
 - Keep entries concise and implementation-oriented.
+- Honor any loaded human-editable constraints when producing the response.

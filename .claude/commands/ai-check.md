@@ -1,5 +1,7 @@
 Run a workflow health check for the active goal.
 
+Respond in Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Use these skills when needed:
 
 - `project-fit-check`

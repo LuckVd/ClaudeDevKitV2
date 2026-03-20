@@ -1,7 +1,10 @@
 Detect high-confidence dead code in the current project.
 
+Respond in Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Use these skills when needed:
 
+- `constraints-loader`
 - `dead-code-detection`
 - `project-fit-check`
 
@@ -29,3 +32,4 @@ Guardrails:
 
 - Use a conservative threshold.
 - Avoid deleting or rewriting code in this command unless the user explicitly asks.
+- Honor any loaded human-editable constraints when producing the response.

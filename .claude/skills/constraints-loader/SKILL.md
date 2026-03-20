@@ -14,3 +14,4 @@ Guidelines:
 - Load only files relevant to the current task.
 - If no matching file exists, continue with the default workflow.
 - Prefer explicit constraints over inferred preferences.
+- Apply loaded constraints to all downstream user-facing natural language output.

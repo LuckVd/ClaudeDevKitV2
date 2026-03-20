@@ -1,7 +1,10 @@
 Synchronize workflow state after a goal has been implemented and verified.
 
+Respond in Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+
 Use these skills when needed:
 
+- `constraints-loader`
 - `sync-and-history`
 - `security-secrets-scan`
 - `dead-code-detection`
@@ -23,3 +26,4 @@ Guardrails:
 - Never commit or push without explicit confirmation.
 - Security blockers stop the commit/push flow unless the user explicitly overrides them.
 - Push failure does not roll back a local commit.
+- Honor any loaded human-editable constraints when producing the response.
