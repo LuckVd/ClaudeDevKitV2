@@ -1,1 +1,0 @@
-"""VoiceCoder tests"""

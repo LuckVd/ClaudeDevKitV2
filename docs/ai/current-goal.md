@@ -2,46 +2,47 @@
 
 ## Goal
 
-**G02: VoiceCoder v0.1 MVP - 项目感知型语音输入工具核心识别** ✅ 已完成
+No active goal yet.
 
 ## Current State
 
-**已完成并同步。**
+Workflow initialized. Goal not selected.
 
-单元测试：8/8 通过
+## Chosen Approach
 
-## Completed Work
+TBD
 
-### 已实现模块
+## Acceptance Criteria
 
-| 模块 | 文件 | 功能 |
-|------|------|------|
-| 配置管理 | `src/voice_coder/config.py` | YAML 配置加载、热词解析 |
-| 音频采集 | `src/voice_coder/audio.py` | PyAudio 麦克风采集 |
-| 语音识别 | `src/voice_coder/recognizer.py` | Vosk 封装、热词配置 |
-| 键盘输出 | `src/voice_coder/emitter.py` | ydotool 键盘模拟 |
-| CLI 控制器 | `src/voice_coder/cli.py` | start/stop 命令 |
+- TBD
 
-### 测试结果
+## Test Plan
 
-- `tests/test_config.py`: 8 tests passed
+- TBD
 
-### 安全检查
+## Steps
 
-- 无敏感信息泄露
+1. Discover current workspace state.
+2. Clarify the goal with the user.
+3. Design the selected approach.
+4. Confirm the plan before implementation.
 
-### 死代码检查
+## Tasks
 
-- 无明显死代码
+- No active tasks yet.
 
-## Next Goal
+## Blockers
 
-**G03: v0.2 项目术语提取**
+- None currently recorded.
 
-- 语料库扫描（解析代码文件/README）
-- 热词生成器（提取关键词+赋予权重）
-- 更新触发器（文件变化监控）
+## Open Questions
+
+- What should the first goal be?
+
+## Goal Candidates
+
+- No goal candidates yet. `/ai-init` or `/ai-goal` can populate this section.
 
 ## Sync Notes
 
-- 2026-03-19: G02-S01 同步完成，路线图已更新
+- No sync notes yet.

@@ -1,16 +1,6 @@
 # Change Log
 
-## 2026-03-19 - G02 VoiceCoder v0.1 MVP
-
-- Goal ID: G02-S01
-- Summary: 实现核心语音识别功能，包括配置管理、音频采集、Vosk 识别封装、ydotool 键盘输出、CLI 控制器
-- Impact: `src/voice_coder/`, `tests/`, `scripts/`, `pyproject.toml`, `README.md`
-- Tests: 8/8 passed (config module)
-- Dead Code: 无明显死代码
-- Security: 无敏感信息泄露
-- Commit Status: 待提交
-
-## 2026-03-19 - G01 工作流初始化
+## 2026-03-19
 
 - Goal ID: bootstrap
 - Summary: Initialized the Claude Code workflow skeleton.
