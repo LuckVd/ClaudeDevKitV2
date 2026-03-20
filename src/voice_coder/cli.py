@@ -8,9 +8,8 @@ import click
 
 from voice_coder import __version__
 from voice_coder.audio import AudioCapture
-from voice_coder.config import CorpusConfig, get_default_config_path, load_config
+from voice_coder.config import get_default_config_path, load_config
 from voice_coder.emitter import KeyboardEmitter
-from voice_coder.extractor import extract_hotwords, save_hotwords
 from voice_coder.recognizer import Recognizer
 
 
@@ -158,84 +157,6 @@ def stop():
 
     except Exception as e:
         click.echo(f"停止失败: {e}", err=True)
-
-
-@main.command()
-@click.argument("path", type=click.Path(exists=True))
-@click.option(
-    "-o",
-    "--output",
-    "output_path",
-    type=click.Path(),
-    default=None,
-    help="热词输出文件路径（默认: ~/.config/voice-coder/hotwords.yaml）",
-)
-@click.option(
-    "-e",
-    "--extensions",
-    multiple=True,
-    default=[".py", ".js", ".ts", ".md"],
-    help="要扫描的文件扩展名（可多次指定）",
-)
-@click.option(
-    "-v",
-    "--verbose",
-    is_flag=True,
-    help="显示详细输出",
-)
-def scan(path: str, output_path: str | None, extensions: tuple[str, ...], verbose: bool):
-    """
-    扫描项目目录提取术语
-
-    从指定目录扫描代码文件，提取标识符作为热词。
-    结果保存到热词文件，供 start 命令使用。
-
-    示例:
-      voice-coder scan ~/projects/my-project
-      voice-coder scan . -o ./hotwords.yaml
-    """
-    scan_path = Path(path).resolve()
-
-    # 确定输出路径
-    if output_path:
-        out_path = Path(output_path)
-    else:
-        out_path = Path.home() / ".config" / "voice-coder" / "hotwords.yaml"
-
-    if verbose:
-        click.echo(f"扫描目录: {scan_path}")
-        click.echo(f"文件类型: {', '.join(extensions)}")
-        click.echo(f"输出文件: {out_path}")
-
-    # 创建语料库配置
-    corpus_config = CorpusConfig(
-        paths=[scan_path],
-        extensions=list(extensions),
-    )
-
-    # 提取热词
-    click.echo("正在扫描...")
-    hotwords = extract_hotwords(corpus_config)
-
-    if not hotwords:
-        click.echo("未提取到任何术语")
-        return
-
-    # 保存热词
-    save_hotwords(hotwords, out_path)
-
-    # 统计信息
-    click.echo(f"\n✓ 扫描完成")
-    click.echo(f"  提取术语: {len(hotwords)} 个")
-    click.echo(f"  输出文件: {out_path}")
-
-    if verbose:
-        # 显示权重分布
-        weights = sorted(set(hotwords.values()), reverse=True)
-        click.echo(f"\n权重分布:")
-        for w in weights[:5]:
-            count = sum(1 for v in hotwords.values() if v == w)
-            click.echo(f"  权重 {w:.1f}: {count} 个术语")
 
 
 if __name__ == "__main__":

@@ -1,23 +1,25 @@
-goal_id: G03-S01
-title: VoiceCoder v0.2 - 项目术语提取
+goal_id: G02-S01
+title: VoiceCoder v0.1 MVP - 核心识别
 stage: done
 status: completed
-selected_option: regex_hybrid_weight
+selected_option: src_layout_ydotool
 design_confirmed: true
 blocked_by: []
 open_questions: []
 implementation_steps:
-  - Step 1: 扩展配置模块 ✅
-  - Step 2: 实现术语提取器 ✅
-  - Step 3: 添加 CLI 命令 ✅
-  - Step 4: 集成热词更新 ✅
+  - Step 1: 项目骨架搭建 ✅
+  - Step 2: 配置模块 ✅
+  - Step 3: 音频采集模块 ✅
+  - Step 4: 识别引擎封装 ✅
+  - Step 5: 键盘输出模块 ✅
+  - Step 6: CLI 控制器 ✅
+  - Step 7: 模型下载脚本 ✅
 test_scope:
-  - tests/test_config.py: 8 passed
-  - tests/test_extractor.py: 9 passed
+  - test_config.py: 配置文件加载、热词解析 (8 passed)
 security_blockers: []
 dead_code_actions: []
 goal_candidates:
-  - G04: v0.3 动态更新
+  - G03: v0.2 项目术语提取
 sync_status: completed
 last_check_at: "2026-03-19"
 last_security_scan_at: "2026-03-19"

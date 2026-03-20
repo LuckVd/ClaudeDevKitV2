@@ -2,19 +2,13 @@
 
 ## Goal
 
-**G03: VoiceCoder v0.2 - 项目术语提取** ✅ 已完成
-
-实现从项目语料库自动提取热词的功能：
-- 扫描指定目录下的代码文件和文档
-- 使用正则表达式提取标识符（CamelCase、snake_case、UPPER_SNAKE）
-- 基于出现频率和代码角色计算热词权重
-- 支持可配置的文件类型扩展
+**G02: VoiceCoder v0.1 MVP - 项目感知型语音输入工具核心识别** ✅ 已完成
 
 ## Current State
 
-**实现完成，测试通过。**
+**已完成并同步。**
 
-单元测试：17/17 通过
+单元测试：8/8 通过
 
 ## Completed Work
 
@@ -22,49 +16,32 @@
 
 | 模块 | 文件 | 功能 |
 |------|------|------|
-| 术语提取器 | `src/voice_coder/extractor.py` | 正则匹配、权重计算、热词保存/加载 |
-| 配置扩展 | `src/voice_coder/config.py` | 添加 `CorpusConfig`、`hotwords_file` |
-| CLI 扩展 | `src/voice_coder/cli.py` | 添加 `scan` 命令 |
-| 识别器更新 | `src/voice_coder/recognizer.py` | 支持从热词文件加载 |
+| 配置管理 | `src/voice_coder/config.py` | YAML 配置加载、热词解析 |
+| 音频采集 | `src/voice_coder/audio.py` | PyAudio 麦克风采集 |
+| 语音识别 | `src/voice_coder/recognizer.py` | Vosk 封装、热词配置 |
+| 键盘输出 | `src/voice_coder/emitter.py` | ydotool 键盘模拟 |
+| CLI 控制器 | `src/voice_coder/cli.py` | start/stop 命令 |
 
 ### 测试结果
 
 - `tests/test_config.py`: 8 tests passed
-- `tests/test_extractor.py`: 9 tests passed
 
-### 功能验证
+### 安全检查
 
-```
-$ voice-coder scan /opt/projects/VoiceCoder -v
-扫描目录: /opt/projects/VoiceCoder
-文件类型: .py, .js, .ts, .md
-输出文件: /root/.config/voice-coder/hotwords.yaml
+- 无敏感信息泄露
 
-✓ 扫描完成
-  提取术语: 354 个
-  输出文件: /root/.config/voice-coder/hotwords.yaml
-```
+### 死代码检查
 
-## Acceptance Criteria
-
-- [x] 支持通过 CLI 参数或配置指定语料库路径
-- [x] 支持 `.py`, `.js`, `.ts`, `.md` 文件类型
-- [x] 支持通过配置扩展其他文件类型
-- [x] 正则表达式正确匹配 CamelCase、snake_case、UPPER_SNAKE_CASE
-- [x] 权重计算符合混合策略（频率 + 角色）
-- [x] 提供 `voice-coder scan <path>` 命令
-- [x] scan 命令输出提取的热词数量和权重分布
-- [x] 单元测试覆盖术语提取逻辑
+- 无明显死代码
 
 ## Next Goal
 
-**G04: v0.3 动态更新**
+**G03: v0.2 项目术语提取**
 
-- 文件监控（watchdog）
-- 热词热更新
-- 防抖机制
+- 语料库扫描（解析代码文件/README）
+- 热词生成器（提取关键词+赋予权重）
+- 更新触发器（文件变化监控）
 
 ## Sync Notes
 
-- v0.2 代码实现完成
-- 需要执行 `/ai-sync` 同步到路线图
+- 2026-03-19: G02-S01 同步完成，路线图已更新
