@@ -1,15 +1,5 @@
 # Change Log
 
-## 2026-03-20 - G04 VoiceCoder v0.3 动态更新
-
-- Goal ID: G04-S01
-- Summary: 实现文件监控和热词动态更新，包括增量提取器、watchdog 监控、10 秒防抖、--watch 选项
-- Impact: `src/voice_coder/watcher.py`, `tests/test_watcher.py`, 更新 `extractor.py`、`recognizer.py`、`cli.py`、`pyproject.toml`
-- Tests: 24/24 passed (config 8 + extractor 9 + watcher 7)
-- Dead Code: 无
-- Security: 无敏感信息泄露
-- Commit Status: 待提交
-
 ## 2026-03-19 - G03 VoiceCoder v0.2 项目术语提取
 
 - Goal ID: G03-S01

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "voice-coder"
-version = "0.3.0"
+version = "0.1.0"
 description = "项目感知型语音输入工具，支持动态热词学习"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -17,7 +17,6 @@ dependencies = [
     "pyaudio>=0.2.14",
     "pyyaml>=6.0",
     "click>=8.1.0",
-    "watchdog>=3.0.0",
 ]
 
 [project.optional-dependencies]

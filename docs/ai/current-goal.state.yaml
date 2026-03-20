@@ -1,27 +1,25 @@
-goal_id: G04-S01
-title: VoiceCoder v0.3 - 动态更新
+goal_id: G03-S01
+title: VoiceCoder v0.2 - 项目术语提取
 stage: done
 status: completed
-selected_option: integrated_watchdog_incremental
+selected_option: regex_hybrid_weight
 design_confirmed: true
 blocked_by: []
 open_questions: []
 implementation_steps:
-  - Step 1: 添加增量提取支持 ✅
-  - Step 2: 实现文件监控器 ✅
-  - Step 3: 扩展识别器 ✅
-  - Step 4: 集成到 CLI ✅
-  - Step 5: 更新配置 ✅
+  - Step 1: 扩展配置模块 ✅
+  - Step 2: 实现术语提取器 ✅
+  - Step 3: 添加 CLI 命令 ✅
+  - Step 4: 集成热词更新 ✅
 test_scope:
   - tests/test_config.py: 8 passed
   - tests/test_extractor.py: 9 passed
-  - tests/test_watcher.py: 7 passed
 security_blockers: []
 dead_code_actions: []
 goal_candidates:
-  - G05: v0.4 生产可用
+  - G04: v0.3 动态更新
 sync_status: completed
-last_check_at: "2026-03-20"
-last_security_scan_at: "2026-03-20"
-last_deadcode_scan_at: "2026-03-20"
-last_synced_at: "2026-03-20"
+last_check_at: "2026-03-19"
+last_security_scan_at: "2026-03-19"
+last_deadcode_scan_at: "2026-03-19"
+last_synced_at: "2026-03-19"
