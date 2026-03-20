@@ -24,6 +24,7 @@ Slash commands:
 - `/ai-help`
 - `/ai-ask`
 - `/ai-init`
+- `/ai-adopt`
 - `/ai-scan`
 - `/ai-roadmap`
 - `/ai-goal`
@@ -37,6 +38,7 @@ Command intent:
 - `/ai-help` explains the workflow, shows current state, and recommends the next command.
 - `/ai-ask` is strictly read-only and cannot modify files or workflow state.
 - `/ai-init` can initialize a blank or near-blank project from a long technical roadmap document or a repository-local roadmap blueprint file.
+- `/ai-adopt` can safely embed this workflow into an existing in-development repository and stop before implementation.
 
 Document roles:
 
