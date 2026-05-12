@@ -22,11 +22,12 @@ Output requirements:
 Commands to include:
 
 - `/ai-help`
-- `/ai-ask`
 - `/ai-init`
+- `/ai-bugfix`
 - `/ai-scan`
 - `/ai-roadmap`
 - `/ai-goal`
+- `/ai-feat`
 - `/ai-check`
 - `/ai-sync`
 - `/ai-deadcode`

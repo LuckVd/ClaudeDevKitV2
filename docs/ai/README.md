@@ -22,12 +22,13 @@ Rules:
 Slash commands:
 
 - `/ai-help`
-- `/ai-ask`
 - `/ai-init`
 - `/ai-adopt`
+- `/ai-bugfix`
 - `/ai-scan`
 - `/ai-roadmap`
 - `/ai-goal`
+- `/ai-feat`
 - `/ai-check`
 - `/ai-sync`
 - `/ai-deadcode`
@@ -36,9 +37,10 @@ Slash commands:
 Command intent:
 
 - `/ai-help` explains the workflow, shows current state, and recommends the next command.
-- `/ai-ask` is strictly read-only and cannot modify files or workflow state.
 - `/ai-init` can initialize a blank or near-blank project from a long technical roadmap document or a repository-local roadmap blueprint file.
+- `/ai-bugfix` guides a structured bug fix workflow: confirm the bug, investigate root cause, propose fix options, and verify the fix.
 - `/ai-adopt` can safely embed this workflow into an existing in-development repository and stop before implementation.
+- `/ai-feat` is a lightweight feature development flow that clarifies requirements, proposes a plan, implements, and appends results to `current-goal.md` without touching the roadmap.
 
 Document roles:
 
