@@ -1,23 +1,27 @@
-Run a workflow health check for the active goal.
+对当前目标做健康检查。
 
-Respond in Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+用中文输出所有面向用户的自然语言。命令名、文件路径、代码标识符保持原样。
 
-Use these skills when needed:
+按需使用技能：
 
-- `project-fit-check`
 - `constraints-loader`
-- `security-secrets-scan`
 
-Check for:
+## 检查项
 
-1. Missing or stale workflow files.
-2. Mismatch between `current-goal.md` and `current-goal.state.yaml`.
-3. Missing acceptance criteria or test plan.
-4. Implementation drift from project conventions.
-5. Security blockers that should stop sync.
-6. Open questions that still block implementation.
+1. 工作流文件是否缺失或过时。
+2. `current-goal.md` 与 `current-goal.state.yaml` 是否一致。
+3. 是否缺验收标准或测试计划。
+4. 实现是否偏离项目约定。
+5. 是否还有阻塞实现的 open question。
 
-Output:
+## 代码质量与安全
 
-- Findings first, ordered by severity.
-- Then the exact next action needed.
+本命令不再自带扫描。需要时调用原生能力（见 `docs/ai/convention.md`）：
+
+- 代码 / 死代码 / 可简化点 → `/code-review`、`/simplify`
+- 密钥与安全 → `/security-review`
+
+## 输出
+
+- 先给发现，按严重度排序。
+- 再给出明确的下一步动作。

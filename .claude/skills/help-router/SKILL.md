@@ -1,29 +1,23 @@
 # help-router
 
-Use this skill for `/ai-help`.
+用于 `/ai-help`：报告当前状态并推荐下一步。
 
-Use Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+用中文输出所有面向用户的自然语言。命令名、文件路径、代码标识符保持原样。
 
-Responsibilities:
+## 职责
 
-- read workflow state from `docs/ai/`
-- build a compact markdown table of commands
-- explain the current state in plain language
-- recommend the most useful next command
-- honor any loaded project constraints that affect response language or format
+- 从 `docs/ai/current-goal.state.yaml` 读取当前状态。
+- 用一句话说清当前目标状态。
+- 推荐当前最该执行的那一条命令，并说明原因。
+- 遵守已加载的项目约束。
 
-Recommendation logic:
+## 推荐逻辑
 
-- if the repository is uninitialized, recommend `/ai-init`
-- if planning docs are stale, recommend `/ai-scan`
-- if there is no active goal, recommend `/ai-goal`
-- if implementation is in progress, recommend the command implied by the current stage
-- if verification is done and sync is pending, recommend `/ai-sync`
+- 仓库未初始化 → `/ai-init`
+- 无活跃目标 → `/ai-goal`
+- 实现进行中 → `/ai-check`
+- 实现已验证、待回写 → `/ai-sync`
 
-Always include:
+## 输出
 
-- command
-- purpose
-- read-only flag
-- when to use
-- short example
+每条命令给出：命令名、用途、是否只读、何时用、一句话示例。

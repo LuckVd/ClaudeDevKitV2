@@ -1,40 +1,30 @@
-Explain the workflow in a concise, actionable format.
+用简洁、可操作的方式说明工作流。
 
-Respond in Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+用中文输出所有面向用户的自然语言。命令名、文件路径、代码标识符保持原样。
 
-Use these skills when needed:
+按需使用技能：
 
-- `constraints-loader`
 - `help-router`
+- `constraints-loader`
 
-Output requirements:
+## 输出要求
 
-1. A markdown table with every workflow command.
-2. For each command, include:
-   - command name
-   - purpose
-   - whether it is read-only
-   - when to use it
-   - one short example
-3. A current state summary based on workflow files.
-4. A recommendation for the single best next command and why.
+1. 一张 markdown 表，列出当前所有命令。
+2. 每条命令给出：命令名、用途、是否只读、何时用、一句话示例。
+3. 基于 `current-goal.state.yaml` 的当前状态小结。
+4. 推荐当前最该执行的那一条命令，并说明原因。
 
-Commands to include:
+## 命令清单
 
-- `/ai-help`
 - `/ai-init`
-- `/ai-bugfix`
-- `/ai-scan`
-- `/ai-roadmap`
 - `/ai-goal`
-- `/ai-feat`
 - `/ai-check`
 - `/ai-sync`
-- `/ai-deadcode`
-- `/ai-security`
+- `/ai-help`
+- `/ai-notes`
 
-Guardrails:
+## 边界
 
-- Prefer the current workflow state over generic advice.
-- If no goal is active, explain that clearly.
-- Honor any loaded human-editable constraints when producing the response.
+- 优先依据当前工作流状态，而非通用建议。
+- 没有活跃目标时明确说明。
+- 遵守已加载的项目约束。

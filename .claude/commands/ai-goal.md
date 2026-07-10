@@ -1,36 +1,31 @@
-Drive the full current-goal workflow from discovery through plan confirmation.
+驱动当前目标：从选定方向到方案确认。
 
-Respond in Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+用中文输出所有面向用户的自然语言。命令名、文件路径、代码标识符保持原样。
 
-Use these skills when needed:
+按需使用技能：
 
-- `goal-discovery`
-- `goal-design`
+- `goal-workflow`
 - `constraints-loader`
-- `project-fit-check`
-- `tdd-execution`
 
-Primary responsibilities:
+## 职责
 
-1. Check the current workspace, `roadmap.md`, and existing goal state.
-2. If there is no active goal, clarify the user's need and propose concrete options from the roadmap or derive a new candidate when needed.
-3. If useful, recommend a minimal proof-of-principle validation before committing to an approach.
-4. Once the user selects an option, expand it into a complete implementation plan with explicit steps and tasks.
-5. Ask about any unclear point that could change the implementation.
-6. Write the confirmed design into `current-goal.md`.
-7. Update `current-goal.state.yaml` with the correct stage.
-8. Only move into implementation after the user confirms the plan.
+1. 检查工作区、`roadmap.md` 和现有目标状态。
+2. 无活跃目标时，澄清用户需求，给出可选方案。
+3. 用户选定后，细化为完整方案：范围、验收标准、测试计划、步骤、任务、集成方式。
+4. 提出会影响实现的歧义点，等用户澄清。
+5. 把确认的设计写入 `current-goal.md`，更新 `current-goal.state.yaml`。
+6. 用户明确确认后，才进入实现。
 
-Required workflow:
+## 工作流
 
-- `empty` or `discover` -> inspect the workspace
-- `options` -> present decision-quality options
-- `design` -> fill scope, acceptance criteria, test plan, integration approach, steps, and tasks
-- `confirm_plan` -> write the plan and wait for user confirmation
-- `implement` -> follow TDD, integrate with the project, avoid isolated code
+- `empty` / `discover` → 检查工作区
+- `options` → 给出可决策的方案选项
+- `design` → 补全范围、验收、测试、步骤、任务
+- `confirm_plan` → 写入方案，等用户确认
+- `implement` → 交给正常对话与 TDD，不再由本命令驱动
 
-Guardrails:
+## 边界
 
-- Never skip clarification when the design is ambiguous.
-- Never start coding before explicit user confirmation.
-- Do not design a standalone island that ignores existing project structure.
+- 设计模糊时不要跳过澄清。
+- 用户确认前不写代码。
+- 不设计脱离项目结构的独立子系统。

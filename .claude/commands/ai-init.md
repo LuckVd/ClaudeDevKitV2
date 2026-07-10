@@ -1,39 +1,31 @@
-Initialize or repair the lightweight AI workflow skeleton for this repository.
+初始化或修复工作流骨架，并把框架安全接入已有项目（原 /ai-adopt 已并入本命令）。
 
-Respond in Chinese for all user-facing natural language output. Keep commands, file paths, and code identifiers in their original form.
+用中文输出所有面向用户的自然语言。命令名、文件路径、代码标识符保持原样。
 
-Use these skills when needed:
+按需使用技能：
 
-- `init-from-proposal`
+- `init-skeleton`
 - `constraints-loader`
 
-Steps:
+## 步骤
 
-1. Verify that `docs/ai` and `.claude/{commands,skills,agents}` exist.
-2. If core workflow files are missing, create or restore them with the repository templates.
-3. If the repository is empty or nearly empty, accept either:
-   - a long pasted technical roadmap / blueprint document
-   - a repository-local path to a technical roadmap / blueprint document
-4. Parse the roadmap blueprint into:
-   - overall technical objective and boundaries
-   - architecture and module plan
-   - milestone goals and subgoals
-   - dependency relationships
-   - initial project constraints
-   - candidate first goals
-5. Write or update planning documents only:
+1. 确认 `docs/ai` 与 `.claude/{commands,skills,agents}` 存在；缺失则用模板补齐。
+2. 判断场景：
+   - 空项目：可接受一份技术蓝图（粘贴文本或仓库内路径），解析为规划文档。
+   - 已有项目：检测接入状态，仅在安全时补齐缺失骨架，产出接入报告。
+3. 只写规划文档：
    - `roadmap.md`
    - `current-goal.md`
    - `current-goal.state.yaml`
-   - `project-summary.md`
    - `constraints/project.md`
-6. Do not auto-select the first current goal. Produce candidates and let `/ai-goal` finalize one.
-7. Do not overwrite filled-in project content unless the user asks.
-8. Summarize what was created, repaired, or initialized from the roadmap blueprint.
+4. 不自动锁定首个 current-goal，只产出候选，交给 `/ai-goal`。
+5. 不覆盖已有实质内容，除非用户要求。
+6. 汇总创建 / 修复 / 从蓝图初始化了什么。
 
-Guardrails:
+## 边界
 
-- Never commit or push.
-- Treat workflow files as shared state.
-- If files already contain meaningful content, preserve it.
-- Do not generate business implementation code during roadmap-based initialization.
+- 不生成业务实现代码。
+- 不修改业务代码。
+- 不自动 commit 或 push。
+- 不再维护 project-tree / project-summary，让模型自己读仓库。
+- 发现已有工作流与本框架冲突，停下来问用户怎么办。
