@@ -1,2 +1,9 @@
 # 敏感笔记文件 - 绝对不上传
 docs/ai/notes.md
+docs/ai/notes-*.md
+
+# 并行开发 worktree 物理目录(每目标一个,不入库)
+.claude/worktrees/
+
+# Claude Code 本地权限缓存(机器特定,不入库)
+.claude/settings.local.json

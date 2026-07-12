@@ -15,10 +15,9 @@
    - 已有项目：检测接入状态，仅在安全时补齐缺失骨架，产出接入报告。
 3. 只写规划文档：
    - `roadmap.md`
-   - `current-goal.md`
-   - `current-goal.state.yaml`
+   - `goals/`（含 `INDEX.md` 与 `_TEMPLATE.*`）
    - `constraints/project.md`
-4. 不自动锁定首个 current-goal，只产出候选，交给 `/ai-goal`。
+4. 不自动锁定首个目标，只产出候选写入 roadmap，交给 `/ai-goal`。
 5. 不覆盖已有实质内容，除非用户要求。
 6. 汇总创建 / 修复 / 从蓝图初始化了什么。
 

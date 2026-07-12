@@ -11,13 +11,16 @@
 
 1. 一张 markdown 表，列出当前所有命令。
 2. 每条命令给出：命令名、用途、是否只读、何时用、一句话示例。
-3. 基于 `current-goal.state.yaml` 的当前状态小结。
+3. 基于 `goals/INDEX.md` 与各 `goals/<id>.state.yaml` 的并行状态小结。
 4. 推荐当前最该执行的那一条命令，并说明原因。
 
 ## 命令清单
 
 - `/ai-init`
 - `/ai-goal`
+- `/ai-dispatch`
+- `/ai-claim`
+- `/ai-status`
 - `/ai-check`
 - `/ai-sync`
 - `/ai-help`

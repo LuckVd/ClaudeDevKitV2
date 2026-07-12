@@ -10,7 +10,7 @@
 ## 步骤
 
 1. 确认当前目标相关测试已通过（必要时调用原生 `/verify`）。
-2. 更新 `roadmap.md`、`current-goal.md`、`current-goal.state.yaml`、`change-log.md`。
+2. 更新 `roadmap.md`、`goals/<id>.md`、`goals/<id>.state.yaml`、`change-log.md`（`stage: done`、`merge_status: merged`）。
 3. 把目标结果回写进 roadmap 表格：状态、依赖相关说明、测试状态、实现日期、commit id（若有）。
 4. 汇总完成内容、影响范围、测试结果。
 
@@ -34,3 +34,4 @@
 - 未经确认不 commit / push。
 - 安全问题应阻断提交，除非用户明确覆盖。
 - 推送失败不回滚本地 commit。
+- 合并与提交由编排者在主线完成；执行者不合并、不向主线提交。

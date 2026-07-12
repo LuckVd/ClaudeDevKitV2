@@ -9,7 +9,7 @@
 ## 检查项
 
 1. 工作流文件是否缺失或过时。
-2. `current-goal.md` 与 `current-goal.state.yaml` 是否一致。
+2. `goals/<id>.md` 与 `goals/<id>.state.yaml` 是否一致；目标的 `owner`/`branch`/`worktree` 三者是否匹配。
 3. 是否缺验收标准或测试计划。
 4. 实现是否偏离项目约定。
 5. 是否还有阻塞实现的 open question。

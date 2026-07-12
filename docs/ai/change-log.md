@@ -18,3 +18,12 @@
 - Tests: 结构一致性已自检
 - Native review: 未运行（需要时用 `/code-review`、`/security-review`）
 - Commit Status: not committed
+
+## 2026-07-11
+
+- Goal ID: parallel-mode
+- Summary: 把「单一当前目标」状态模型升级为「多目标并行看板」，支持多 AI 实例协作（贵模型编排 + 便宜模型执行）。
+- Impact: 新增 `goals/`（`INDEX.md` + `_TEMPLATE.*`），废弃 `current-goal.*` 单例；新增命令 `/ai-dispatch`、`/ai-claim`、`/ai-status` 与 skill `claim-workflow`；`convention.md` 加「模型分工」「并行编排」「提交纪律」三节；新建 `.claude/settings.json` + hook 兜底破坏性 git；`.gitignore` 忽略 `.claude/worktrees/`；现有命令/skill/README 引用从单例迁到 `goals/`。
+- Tests: 结构一致性已自检（grep 验证 `current-goal` 仅 `_archive/` 残留）
+- Native review: 未运行（需要时用 `/code-review`、`/security-review`）
+- Commit Status: not committed

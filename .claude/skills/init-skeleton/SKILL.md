@@ -33,13 +33,13 @@
 ## 写入目标
 
 - `docs/ai/roadmap.md`
-- `docs/ai/current-goal.md`
-- `docs/ai/current-goal.state.yaml`
+- `docs/ai/goals/`（含 `INDEX.md` 与 `_TEMPLATE.md`、`_TEMPLATE.state.yaml`）
 - `docs/ai/constraints/project.md`
 
 ## 规则
 
-- 不自动锁定首个 current-goal，只产出候选，交给 `/ai-goal`。
+- 不自动锁定首个目标，只产出候选写入 roadmap，交给 `/ai-goal`。
+- 若接入旧版本（存在单例 `current-goal.md`/`current-goal.state.yaml` 且 `goal_id` 非空），先把内容搬运到 `goals/<id>.*` 再删除单例；空占位直接删除。
 - 不覆盖已有实质内容，除非用户明确要求。
 - 不修改业务代码。
 - 不自动 commit / push。

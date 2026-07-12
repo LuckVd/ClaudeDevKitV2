@@ -6,7 +6,7 @@
 
 ## 职责
 
-1. 读取 `roadmap.md` 和 `current-goal.state.yaml`，判断当前是否已有活跃目标。
+1. 读取 `roadmap.md` 与 `goals/INDEX.md`（或各 `goals/<id>.state.yaml`），判断当前是否有活跃目标；多目标可并行。
 2. 若无活跃目标，从 roadmap 或用户输入中提炼 2-3 个候选，让用户选择，不自动锁定。
 3. 用户选定方向后，补全：
    - 范围（做什么 / 不做什么）
@@ -15,13 +15,13 @@
    - 实现步骤与任务
    - 与现有项目的集成方式（不要造孤岛）
 4. 逐条提出会影响实现的歧义点，等用户澄清。
-5. 把确认后的设计写入 `docs/ai/current-goal.md`。
-6. 把 `docs/ai/current-goal.state.yaml` 的 `stage` 设为 `confirm_plan`。
+5. 把确认后的设计写入 `docs/ai/goals/<goal-id>.md`。
+6. 把 `docs/ai/goals/<goal-id>.state.yaml` 的 `stage` 设为 `confirm_plan`、`design_confirmed` 设为 true。
 
 ## 进入实现前的硬性要求
 
 - 所有关键假设已确认。
-- 设计已写入 `current-goal.md`。
+- 设计已写入 `goals/<goal-id>.md`。
 - 用户已明确确认方案。
 
 ## 边界

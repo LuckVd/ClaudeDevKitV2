@@ -6,17 +6,21 @@
 
 ## 职责
 
-- 从 `docs/ai/current-goal.state.yaml` 读取当前状态。
-- 用一句话说清当前目标状态。
+- 从 `goals/INDEX.md` 与各 `goals/<id>.state.yaml` 读取并行状态。
+- 用一句话说清当前并行目标状态。
 - 推荐当前最该执行的那一条命令，并说明原因。
+- 同样支撑 `/ai-status` 渲染并行看板。
 - 遵守已加载的项目约束。
 
 ## 推荐逻辑
 
 - 仓库未初始化 → `/ai-init`
 - 无活跃目标 → `/ai-goal`
+- 有已确认方案待发布 → `/ai-dispatch`
+- 有 `ready_to_claim` 目标（执行者）→ `/ai-claim <id>`
 - 实现进行中 → `/ai-check`
-- 实现已验证、待回写 → `/ai-sync`
+- 有 `ready_for_review`/`pending_review`（编排者）→ 评审 + 合并 + `/ai-sync`
+- 想看全局并行进度 → `/ai-status`
 
 ## 输出
 
