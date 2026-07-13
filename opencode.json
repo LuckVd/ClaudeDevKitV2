@@ -1,0 +1,32 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "executor": {
+      "description": "执行者(便宜模型):领取目标,在专属 worktree 并行开发。红线由 permission 原生强制——不 push、不 merge、不切主线。",
+      "mode": "primary",
+      "permission": {
+        "bash": {
+          "git push*": "deny",
+          "git merge*": "deny",
+          "git rebase*": "deny",
+          "git reset --hard*": "deny",
+          "git checkout main": "deny",
+          "git checkout master": "deny",
+          "git switch main": "deny",
+          "git switch master": "deny"
+        }
+      }
+    },
+    "orchestrator": {
+      "description": "编排者(贵模型):规划/发布/评审/合并/回写。git 写操作需确认。",
+      "mode": "primary",
+      "permission": {
+        "bash": {
+          "git push*": "ask",
+          "git merge*": "ask",
+          "git commit*": "ask"
+        }
+      }
+    }
+  }
+}

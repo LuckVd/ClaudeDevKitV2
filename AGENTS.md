@@ -15,21 +15,28 @@
 - `docs/ai/constraints/` —— 全局与项目硬约束。
 - `docs/ai/change-log.md` —— 变更记录。
 
-## 命令当指令文档用
+## 命令(OpenCode 原生 slash)
 
-本项目没有你原生能调用的 slash 命令(那些是 Claude Code 专有的 `.claude/commands/`)。要执行某个流程,**读对应命令文件并按其步骤操作**:
+本项目已适配 OpenCode 原生命令(`.opencode/commands/`,通过 `@file` 复用 `.claude/commands/` 内容,零重复维护)。直接输入 `/` + 命令名:
 
-| 想做什么 | 读这个文件 |
-|---|---|
-| 初始化 / 修复骨架 | `.claude/commands/ai-init.md` |
-| 选定并设计目标 | `.claude/commands/ai-goal.md` |
-| 发布目标到看板(编排者) | `.claude/commands/ai-dispatch.md` |
-| 领取目标(执行者) | `.claude/commands/ai-claim.md` |
-| 看并行看板 | `.claude/commands/ai-status.md` |
-| 健康检查 | `.claude/commands/ai-check.md` |
-| 回写路线图 + 提交 | `.claude/commands/ai-sync.md` |
+| 命令 | 作用 | 默认 agent |
+|---|---|---|
+| `/ai-init` | 初始化 / 修复骨架 | 默认 |
+| `/ai-goal` | 选定并设计目标 | orchestrator |
+| `/ai-dispatch` | 发布目标到看板 | orchestrator |
+| `/ai-claim` | 执行者领取目标 | **executor(红线强制)** |
+| `/ai-status` | 渲染并行看板 | 默认 |
+| `/ai-check` | 健康检查 | 默认 |
+| `/ai-sync` | 回写 + 协助提交 | orchestrator |
+| `/ai-help` | 状态 + 推荐下一步 | 默认 |
+| `/ai-notes` | 本地笔记(不入库) | 默认 |
 
-命令里引用的 skill(如 `claim-workflow`)在 `.claude/skills/<name>/SKILL.md`,需要时一并读。
+**两个角色 agent**(Tab 切换;定义在 `opencode.json`):
+
+- `executor`(执行者·便宜模型):`permission` 原生拦截 `git push`/`merge`/`rebase`/`reset --hard`/切主线——红线由工具强制,不靠自觉。
+- `orchestrator`(编排者·贵模型):git 写操作(`push`/`merge`/`commit`)需确认。
+
+命令的真实逻辑在 `.claude/commands/`(被 `.opencode/commands/` 复用);命令里引用的 skill 在 `.claude/skills/<name>/SKILL.md`,已被对应 `.opencode` 命令一并 `@file` 加载。
 
 ## 两个角色
 
